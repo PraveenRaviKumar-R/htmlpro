@@ -1,169 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Laptop Page</title>
-
-  <!-- Include Bootstrap CSS & Icons (CDN) -->
+  
+  <!-- Bootstrap CSS & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
+  
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    :root {
+      --primary-color: #9a0606;
+      --secondary-color: #000000;
+      --light-bg: rgb(231, 215, 215);
+      --text-light: #ffffff;
     }
-
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
       display: flex;
       flex-direction: column;
-      background-color: rgb(231, 215, 215);
+      min-height: 100vh;
     }
-
-    /* Navigation */
-    .custom-navbar {
-      background-color: #9a0606;
-      color: white;
-      padding: 15px 0;
+    
+    /* Navigation - Mobile First */
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 0.8rem 1rem;
     }
-
+    
     .navbar-brand {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      color: white !important;
+      color: var(--text-light) !important;
     }
-
+    
     .navbar-toggler {
-      border-color: rgba(255,255,255,0.5);
+      border: none;
+      padding: 0.5rem;
     }
-
+    
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
-
+    
     .nav-link {
-      color: white !important;
-      padding: 8px 12px;
+      color: var(--text-light) !important;
+      padding: 0.5rem 1rem;
+      margin: 0.2rem 0;
       border-radius: 4px;
       transition: background-color 0.3s;
     }
-
+    
     .nav-link:hover {
       background-color: #b90000;
     }
-
+    
     /* Header */
     header {
-      background-color: #000000;
-      color: rgb(255, 255, 255);
+      background-color: var(--secondary-color);
+      color: var(--text-light);
       text-align: center;
-      padding: 40px 20px;
+      padding: 2rem 1rem;
     }
-
-    /* Main content */
-    .content {
-      flex: 1;
+    
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
     }
-
+    
+    /* Main Content */
     main {
+      flex: 1;
+      width: 100%;
       max-width: 1024px;
-      margin: 20px auto;
+      margin: 1rem auto;
       background: white;
-      padding: 20px;
+      padding: 1rem;
       box-shadow: 0 0 10px rgba(169, 125, 125, 0.1);
-      width: 95%;
     }
-
+    
     /* Carousel */
+    .carousel {
+      margin-bottom: 1.5rem;
+    }
+    
     .carousel-item img {
-      height: auto;
-      max-height: 500px;
+      max-height: 200px;
       object-fit: contain;
     }
-
-    /* Product cards */
-    .product-scroll {
+    
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      padding: 0.5rem;
+    }
+    
+    .carousel-caption p {
+      margin-bottom: 0.2rem;
+      font-size: 0.9rem;
+    }
+    
+    /* Features Section */
+    .features-list {
+      padding-left: 1.2rem;
+    }
+    
+    .features-list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Product Cards */
+    .products-container {
       overflow-x: auto;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
-      padding-bottom: 15px;
+      padding-bottom: 1rem;
+      margin: 1rem -0.5rem;
     }
-
+    
     .product-card {
       display: inline-block;
+      width: 85%;
+      max-width: 250px;
+      margin-right: 1rem;
       white-space: normal;
-      width: 250px;
-      margin-right: 15px;
       vertical-align: top;
     }
-
+    
+    .product-card:last-child {
+      margin-right: 0;
+    }
+    
+    .product-card .card {
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Comparison Section */
+    .comparison-card {
+      margin-bottom: 1.5rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    
+    .comparison-card h3 {
+      font-size: 1.2rem;
+    }
+    
     /* Footer */
     footer {
       background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 30px 0;
+      color: var(--text-light);
+      padding: 1.5rem 0;
     }
-
-    footer a {
+    
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-section h5 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-section ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-section a {
       color: #e7f1f3;
       text-decoration: none;
     }
-
-    footer a:hover {
+    
+    .footer-section a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
+    
+    .copyright {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 1rem;
+    }
+    
+    /* Tablet and Desktop Styles */
+    @media (min-width: 768px) {
       header {
-        padding: 30px 15px;
+        padding: 3rem 1rem;
       }
       
-      h1 {
-        font-size: 1.8rem;
+      header h1 {
+        font-size: 2rem;
       }
       
       .carousel-item img {
-        max-height: 300px;
+        max-height: 400px;
+      }
+      
+      .products-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        overflow-x: visible;
+        white-space: normal;
       }
       
       .product-card {
-        width: 200px;
+        width: 48%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .comparison-row {
+        display: flex;
+        gap: 1rem;
+      }
+      
+      .comparison-card {
+        width: 48%;
       }
     }
-
-    @media (max-width: 576px) {
-      header {
-        padding: 25px 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .carousel-item img {
-        max-height: 250px;
+    
+    @media (min-width: 992px) {
+      .navbar {
+        padding: 1rem 2rem;
       }
       
       .product-card {
-        width: 180px;
-      }
-      
-      footer .col-md-4 {
-        margin-bottom: 20px;
+        width: 23%;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Navbar - now using Bootstrap's responsive navbar -->
-  <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
-    <div class="container">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#">MySite</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -193,184 +280,169 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <h1 class="mb-0">Welcome to My Laptop-Friendly Webpage</h1>
+      <h1>Welcome to My Laptop-Friendly Webpage</h1>
     </div>
   </header>
 
-  <!-- Main content -->
-  <div class="content">
-    <main>
-      <h1>Get the highlights.</h1>
-
-      <div id="carouselExampleDark" class="carousel carousel-dark slide mb-4" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-
-        <div class="carousel-inner rounded">
-          <div class="carousel-item active" data-bs-interval="10000">
-            <img src="https://photos5.appleinsider.com/gallery/product_pages/176-hero.jpg" class="d-block w-100" alt="Best Sale">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-              <h5>Best Sale Of The Year</h5>
-              <p>Some representative placeholder content for the first slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="https://www.apple.com/v/macbook-pro-14-and-16/a/images/meta/macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png" class="d-block w-100" alt="MacBook Pro">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-              <p class="h5"><b>Strikingly thin and fast so you can work, play or create anywhere.</b><br>From ₹99900.00*</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-13-digitalmat-gallery-1-202503?wid=728&hei=666&fmt=png-alpha&.v=RWZDcE1Pa2MvREpxR2hwendCZFpRa2EvQmI5ZjZseVhPSEJZVkYxZ09JdFpUdXE4MkhYYjRLTVptRHE3NGNZdHhaVXN2UmVLZWxyY01GTDZmcDYxbitZbnd2dEloRUI0QkxmQVJESllzWlN5ekw2b3VPdnZLWU14ZXc2aDkvRXI" class="d-block w-100" alt="MacBook Air">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-              <p class="h5"><b>MacBook Air 13-inch</b><br><b>From ₹7908.00/mo. with instant cashback and No Cost EMI</b><br>or ₹99900.00.</p>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <!-- Main Content -->
+  <main class="container">
+    <h2 class="mb-3">Get the highlights</h2>
+    
+    <!-- Carousel -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-
-      <h2>Features</h2>
-      <ul class="list-group mb-4">
-        <li class="list-group-item border-0">
-          <h5 class="text-danger">M4 Chip</h5>
-          <ul class="list-unstyled">
-            <li><b>Up to 6x faster than the most popular Intel-based iMac</b></li>
-            <li><b>Up to 2.1x faster than iMac with M1 chip on demanding creative workflows</b></li>
-            <li><b>Up to 4.5x faster than the most popular Windows all-in-one</b></li>
-          </ul>
-        </li>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://photos5.appleinsider.com/gallery/product_pages/176-hero.jpg" class="d-block w-100" alt="Best Sale">
+          <div class="carousel-caption">
+            <h5>Best Sale Of The Year</h5>
+            <p>Limited time offers on select models</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.apple.com/v/macbook-pro-14-and-16/a/images/meta/macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png" class="d-block w-100" alt="MacBook Pro">
+          <div class="carousel-caption">
+            <p><strong>Strikingly thin and fast</strong><br>From ₹99900.00*</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/macbook-air-13-digitalmat-gallery-1-202503?wid=728&hei=666&fmt=png-alpha&.v=RWZDcE1Pa2MvREpxR2hwendCZFpRa2EvQmI5ZjZseVhPSEJZVkYxZ09JdFpUdXE4MkhYYjRLTVptRHE3NGNZdHhaVXN2UmVLZWxyY01GTDZmcDYxbitZbnd2dEloRUI0QkxmQVJESllzWlN5ekw2b3VPdnZLWU14ZXc2aDkvRXI" class="d-block w-100" alt="MacBook Air">
+          <div class="carousel-caption">
+            <p><strong>MacBook Air 13-inch</strong><br>From ₹7908.00/mo.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+    <!-- Features -->
+    <section class="mb-4">
+      <h3 class="mb-3">Features</h3>
+      <ul class="features-list">
+        <li class="text-danger"><strong>M4 Chip</strong></li>
+        <li>Up to 6x faster than Intel-based iMac</li>
+        <li>Up to 2.1x faster than M1 chip</li>
+        <li>Up to 4.5x faster than Windows all-in-one</li>
       </ul>
-    </main>
-
-    <div class="container my-4">
-      <h4 class="mb-3">Compare with similar items</h4>
-      <div class="product-scroll">
-        <!-- Product Card 1 -->
+    </section>
+    
+    <!-- Products -->
+    <section class="mb-4">
+      <h3 class="mb-3">Compare with similar items</h3>
+      <div class="products-container">
         <div class="product-card">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <img src="https://m.media-amazon.com/images/I/316ArzLeJ2L._AC_.jpg" class="card-img-top img-fluid p-3" alt="Item 1">
-            <div class="card-body">
-              <h6 class="card-title">Apple MacBook Air Laptop:<br> Apple M1 chip, 13.3-inch</h6>
-              <button class="btn btn-warning fw-bold rounded-pill">Add to cart</button>
+          <div class="card h-100">
+            <img src="https://m.media-amazon.com/images/I/316ArzLeJ2L._AC_.jpg" class="card-img-top p-3" alt="MacBook Air M1">
+            <div class="card-body text-center">
+              <h6 class="card-title">Apple MacBook Air Laptop: M1 chip, 13.3-inch</h6>
+              <button class="btn btn-warning btn-sm fw-bold rounded-pill">Add to cart</button>
             </div>
           </div>
         </div>
-
-        <!-- Product Card 2 -->
+        
         <div class="product-card">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <img src="https://m.media-amazon.com/images/I/416e1B8V75L._AC_.jpg" class="card-img-top img-fluid p-3" alt="Item 2">
-            <div class="card-body">
-              <h6 class="card-title">Apple 2025 MacBook Air:<br> M4 chip, 13-inch</h6>
-              <button class="btn btn-warning fw-bold rounded-pill">Add to cart</button>
+          <div class="card h-100">
+            <img src="https://m.media-amazon.com/images/I/416e1B8V75L._AC_.jpg" class="card-img-top p-3" alt="MacBook Air M4">
+            <div class="card-body text-center">
+              <h6 class="card-title">Apple 2025 MacBook Air: M4 chip, 13-inch</h6>
+              <button class="btn btn-warning btn-sm fw-bold rounded-pill">Add to cart</button>
             </div>
           </div>
         </div>
-
-        <!-- Product Card 3 -->
+        
         <div class="product-card">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <img src="https://m.media-amazon.com/images/I/41CvNGqdI3L._AC_.jpg" class="card-img-top img-fluid p-3" alt="Item 3">
-            <div class="card-body">
-              <h6 class="card-title">2022 Apple MacBook Air:<br> M2 chip, 13.6-inch</h6>
-              <button class="btn btn-warning fw-bold rounded-pill">Add to cart</button>
+          <div class="card h-100">
+            <img src="https://m.media-amazon.com/images/I/41CvNGqdI3L._AC_.jpg" class="card-img-top p-3" alt="MacBook Air M2">
+            <div class="card-body text-center">
+              <h6 class="card-title">2022 MacBook Air: M2 chip, 13.6-inch</h6>
+              <button class="btn btn-warning btn-sm fw-bold rounded-pill">Add to cart</button>
             </div>
           </div>
         </div>
-
-        <!-- Product Card 4 -->
+        
         <div class="product-card">
-          <div class="card h-100 text-center border-0 shadow-sm">
-            <img src="https://m.media-amazon.com/images/I/41+0wuOoe0L._AC_.jpg" class="card-img-top img-fluid p-3" alt="Item 4">
-            <div class="card-body">
-              <h6 class="card-title">2022 Apple MacBook Air Laptop:<br> M2 chip, 13.6-inch</h6>
-              <button class="btn btn-warning fw-bold rounded-pill">Add to cart</button>
+          <div class="card h-100">
+            <img src="https://m.media-amazon.com/images/I/41+0wuOoe0L._AC_.jpg" class="card-img-top p-3" alt="MacBook Air M2">
+            <div class="card-body text-center">
+              <h6 class="card-title">2022 MacBook Air Laptop: M2 chip</h6>
+              <button class="btn btn-warning btn-sm fw-bold rounded-pill">Add to cart</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="container text-center my-5">
-      <!-- Top Image -->
-      <img src="https://www.apple.com/v/mac/home/cg/images/overview/select/product_tile_mba_13_15__fx2g3qlubdym_large_2x.png" alt="MacBook Image" class="img-fluid mb-4" style="max-width: 100%; height: auto;">
-
-      <!-- Laptop Cards Row -->
-      <div class="row justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-lg-5 col-md-6 mb-4 mx-2">
-          <div class="p-3 bg-light rounded">
-            <h3 class="fw-bold">MacBook Air 13” and 15”</h3>
-            <p class="fw-semibold">M4 chip</p>
-            <p>Strikingly thin and fast so you can work, play or create anywhere.</p>
-            <p><strong>From ₹99,900.00*</strong></p>
-            <div class="d-flex justify-content-center gap-3">
-              <a href="#" class="btn btn-primary">Buy ›</a>
-              <a href="#" class="btn btn-outline-secondary">Learn more ›</a>
-            </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section>
+      <img src="https://www.apple.com/v/mac/home/cg/images/overview/select/product_tile_mba_13_15__fx2g3qlubdym_large_2x.png" alt="MacBook lineup" class="img-fluid mb-4">
+      
+      <div class="comparison-row">
+        <div class="comparison-card">
+          <h3>MacBook Air 13" and 15"</h3>
+          <p><strong>M4 chip</strong></p>
+          <p>Strikingly thin and fast for work and play anywhere.</p>
+          <p><strong>From ₹99,900.00*</strong></p>
+          <div class="d-grid gap-2">
+            <a href="#" class="btn btn-primary btn-sm">Buy ›</a>
           </div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="col-lg-5 col-md-6 mb-4 mx-2">
-          <div class="p-3 bg-light rounded">
-            <h3 class="fw-bold">MacBook Pro 14” and 16”</h3>
-            <p class="fw-semibold">M4, M4 Pro or M4 Max chip</p>
-            <p>The most advanced Mac laptops for demanding workflows.</p>
-            <p><strong>From ₹1,69,900.00*</strong></p>
-            <div class="d-flex justify-content-center gap-3">
-              <a href="#" class="btn btn-primary">Buy ›</a>
-              <a href="#" class="btn btn-outline-secondary">Learn more ›</a>
-            </div>
+        
+        <div class="comparison-card">
+          <h3>MacBook Pro 14" and 16"</h3>
+          <p><strong>M4, M4 Pro or M4 Max chip</strong></p>
+          <p>The most advanced Mac laptops for demanding workflows.</p>
+          <p><strong>From ₹1,69,900.00*</strong></p>
+          <div class="d-grid gap-2">
+            <a href="#" class="btn btn-primary btn-sm">Buy ›</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="row text-start">
-        <div class="col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold">Apple Premium Reseller</h5>
-          <p class="mb-1">Authorised Service Provider,</p>
-          <p class="mb-1"> Aptronix, Palladium,</p>                  
-          <p class="mb-1"><a href="https://maps.app.goo.gl/EM7BujEwbQw8dDRf6" class="text-white">Mumbai</a></p>
+      <div class="row">
+        <div class="col-md-4 footer-section">
+          <h5>Apple Premium Reseller</h5>
+          <p>Authorised Service Provider</p>
+          <p>Aptronix, Palladium</p>
+          <p><a href="https://maps.app.goo.gl/EM7BujEwbQw8dDRf6">Mumbai</a></p>
         </div>
-
-        <div class="col-md-4 mb-4 mb-md-0">
-          <h5 class="fw-bold">Quick links</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Home</a></li>
-            <li><a href="#" class="text-white">About us</a></li>
-            <li><a href="#" class="text-white">Buy Now</a></li>
-            <li><a href="https://maps.app.goo.gl/FFAVjpooAKutiUPB7" class="text-white">Location</a></li>
+        
+        <div class="col-md-4 footer-section">
+          <h5>Quick links</h5>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Buy Now</a></li>
+            <li><a href="https://maps.app.goo.gl/FFAVjpooAKutiUPB7">Location</a></li>
           </ul>
         </div>
-
-        <div class="col-md-4">
-          <h5 class="fw-bold">Connect Us</h5>
-          <p><i class="bi bi-facebook"></i><a href="https://www.facebook.com/marketplace/chennai/apple-macbooks/" class="text-white ms-2"> Facebook</a></p>
-          <p><i class="bi bi-instagram"></i><a href="https://www.instagram.com/apple/" class="text-white ms-2"> Instagram</a></p>
-          <p><i class="bi bi-twitter"></i><a href="https://x.com/apple" class="text-white ms-2"> Twitter</a></p>
+        
+        <div class="col-md-4 footer-section">
+          <h5>Connect Us</h5>
+          <p><i class="bi bi-facebook"></i> <a href="https://www.facebook.com/marketplace/chennai/apple-macbooks/">Facebook</a></p>
+          <p><i class="bi bi-instagram"></i> <a href="https://www.instagram.com/apple/">Instagram</a></p>
+          <p><i class="bi bi-twitter"></i> <a href="https://x.com/apple">Twitter</a></p>
         </div>
       </div>
-
-      <hr class="bg-light my-4">
-      <p class="text-center mb-0">Copyright © 2025 Apple Inc. All rights reserved.</p>
+      
+      <div class="copyright">
+        <p class="mb-0">Copyright © 2025 Apple Inc. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
